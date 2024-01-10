@@ -106,18 +106,123 @@ console.log(avengers3.length)
 
 //! 1.4 Añade 2 elementos al array: "Morty" y "Summer". Muestra en consola el último personaje del array
 const rickAndMortyCharacters = ["Rick", "Beth", "Jerry"];
-rickAndMortyCharacters.push('Morty', 'Summer')
-console.log(rickAndMortyCharacters)
+const rickTwo = rickAndMortyCharacters.push('Morty', 'Summer')
+const rickLast = rickAndMortyCharacters.pop()
+console.log(rickLast)
 
-//! 1.5 Elimina el último elemento del array y muestra el primero y el último por consola.
+//! 1.5 Elimina el último elemento del array y muestra el primero y el último por consola.----->?
 const rickAndMortyCharacters1 = ["Rick", "Beth", "Jerry", "Morty", "Summer", "Lapiz Lopez"];
-rickAndMortyCharacters1.pop()
-console.log(rickAndMortyCharacters1.slice())
+const rickLess = rickAndMortyCharacters1.pop()
+const rickFirst = rickAndMortyCharacters1.shift()
+console.log(rickFirst, rickLast)
 
 //! 1.6 Elimina el segundo elemento del array y muestra el array por consola.
 const rickAndMortyCharacters2 = ["Rick", "Beth", "Jerry", "Morty", "Summer", "Lapiz Lopez"];
 rickAndMortyCharacters2.splice(1,1)
 console.log(rickAndMortyCharacters2)
+
+//?----------- Iteración #5: Arrays
+//! En base al código siguiente, muestra los mensajes correctos por consola.
+const number1 = 10;
+const number2 = 20;
+const number3 = 2;
+/*
+if(number1 === 10){
+    console.log('number1 es estrictamente igual a 10')
+}
+
+if (number2 /= number1 === 2) {
+  console.log("number2 dividido entre number1 es igual a 2");
+}
+
+if (number1 !== number2) {
+  console.log("number1 es estrictamente distinto a number2");
+}
+
+if (number3 != number1) {
+  console.log("number3 es distinto number1");
+}
+
+if (number3 * 5 === number1) {
+  console.log("number3 por 5 es igual a number1");
+}
+
+if (number3 * 5 == number1 && number1 * 2 == number2) {
+  console.log("number3 por 5 es igual a number1 Y number1 por 2 es igual a number2");
+}
+
+if (number2 * 2 == number1 || number1 / 5 == number3) {
+  console.log("number2 entre 2 es igual a number1 O number1 entre 5 es igual a number3");
+}*/
+
+//?----------- Iteración #6: Bucles
+/*
+
+
+1.3 Crea un bucle para conseguir dormir contando ovejas. 
+Este bucle tiene que dar 10 vueltas, es decir, 10 console.log.
+Muestra por consola un mensaje diciendo 'Intentando dormir 🐑' en cada vuelta del bucle 
+y cambia el mensaje en la décima vuelta a 'Dormido!'.
+*/
+//! 1.1 Crea un bucle for que vaya desde 0 a 9 y muestralo por consola.
+let number = 0
+for (let number = 0; number <= 9; number++){
+	console.log(number);
+}
+
+//! 1.2 Crea un bucle for que vaya desde 0 a 9 y muestralo por consola solo cuando el resto del numero dividido entre 2 sea 0.
+let bucle = 0
+for (let bucle = 0; bucle <=9; bucle++){
+	if(bucle % 2 === 0){
+		console.log(bucle)
+	}
+}
+
+
+//! 1.3 Crea un bucle para conseguir dormir contando ovejas
+const ovejas = 0
+while (ovejas < 9) {
+	console.log('Intentando dormir');
+	ovejas == ovejas + 1;
+	break;
+}
+console.log('Dormido')
+
+/*
+const ovejas = 10
+switch (ovejas) {
+	case 1:
+		console.log('Intentando dormir');
+		break;
+	case 2:
+		console.log('Intentando dormir');
+		break;
+	default:
+		console.log('Dormido');
+		break;
+}*/
+
+/*if (ovejas === 1){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 2){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 3){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 4){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 5){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 6){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 7){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 8){
+	console.log('Intentando dormir 🐑');
+} else if (ovejas === 9){
+	console.log('Intentando dormir 🐑');
+} else {
+	console.log('Dormido!');
+}*/
 
 
 
