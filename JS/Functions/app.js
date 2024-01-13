@@ -12,14 +12,19 @@ let mayorNum = sum(8,1);
 console.log(mayorNum)
 
 //?----------- Iteración #2: Buscar la palabra más larga
-//!Completa la función que tomando un array de strings como argumento devuelva el más largo,
+//!Completa la función que tomando un array de strings como argumento devuelva el más largo,   
 //!en caso de que dos strings tenga la misma longitud deberá devolver el primero.
 
-const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 'Spiderman', 'Captain M.'];
-function findLongestWord(palabra) {
+const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 'Spiderman', 'Captain M.'];    //----------------------
 
 
+/*function findLongestWord(palabra) {
+  const conjuntoPalabras = avengers.toString
+  
 }
+
+
+console.log(findLongestWord)*/
 
 //?----------- Iteración #3: Calcular la suma
 //! Calcular una suma puede ser tan simple como iterar sobre un array y sumar cada uno de los elementos.
@@ -44,7 +49,7 @@ console.log("🚀 ~ promNumbers:", promNumbers)
 //! Crea una función que reciba por parámetro un array y cuando es un valor number lo sume y de lo contrario 
 //! cuente la longitud del string y lo sume. Puedes usar este array para probar tu función:
 
-const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];
+const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];  //------------- usar parseInt para la conversión string-número
 
 //?----------- Iteración #6: Valores únicos
 //! Crea una función que reciba por parámetro un array y compruebe si existen elementos duplicados, 
@@ -86,37 +91,19 @@ const nameFinder = [
   'Jessica',
   'Marc'
   ];
-  /*function finderName(param) {
-  // insert code
-  }*/
-
-  const finderNames = (name) => {     // fail: no es lo que andas buscando
-    if (name = finder.name) {
-      nameFinder = true 
+  
+  const finderNames = (arr, posicion) => {     
+    if (arr.find(i => posicion === i)){
+      console.log(true, arr.indexOf(posicion))
+      return
     } else {
-      nameFinder = false 
-    
+      console.log(false)
     }
   };
 
-  console.log("🚀 ~ finderName ~ nameFinder:", nameFinder)
-
-  /*const finderName =(arrayName, index) => {         
-                                                        
-    for (let name of arrayName) {
-     palabra.toLowerCase() === palabrasContar.toLowerCase() && acc++;
-    }
-
-    return acc;
+  const resultado = finderNames (nameFinder, 'Alicia')
+ 
   
-  }
-
-  const resultado = repeatCounter(counterWords, 'code')
-  console.log("🚀 ~ resultado:", resultado)*/
-  
-
-
-
   //?----------- Iteración #8: Contador de repeticiones
   //!Crea una función que nos devuelva el número de veces que se repite cada una de las palabras que lo conforma. Puedes usar este array para probar tu función:
 
@@ -135,8 +122,8 @@ const nameFinder = [
     ];
    
   
-    
-    /*const repeatCounter =(arrayPalabras, palabrasContar) => {          //----------- este sirve si das una palabra, pero no sale de forma automática
+     
+   /* const repeatCounter =(arrayPalabras, palabrasContar) => {          //----------- este sirve si das una palabra, pero no sale de forma automática
       let acc = 0                                                      //----------- revisar código
       for (let palabra of arrayPalabras) {
        palabra.toLowerCase() === palabrasContar.toLowerCase() && acc++;
@@ -148,6 +135,8 @@ const nameFinder = [
 
     const resultado = repeatCounter(counterWords, 'code')
     console.log("🚀 ~ resultado:", resultado)*/
+    
+
     
     
     
