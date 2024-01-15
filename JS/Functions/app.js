@@ -18,8 +18,8 @@ console.log(mayorNum)
 const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 'Spiderman', 'Captain M.'];    //----------------------
 
 
-/*function findLongestWord(palabra) {
-  const conjuntoPalabras = avengers.toString
+/*function findLongestWord(string) {
+  const conjuntoPalabras = avengers.length
   
 }
 
@@ -49,7 +49,23 @@ console.log("🚀 ~ promNumbers:", promNumbers)
 //! Crea una función que reciba por parámetro un array y cuando es un valor number lo sume y de lo contrario 
 //! cuente la longitud del string y lo sume. Puedes usar este array para probar tu función:
 
-const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];  //------------- usar parseInt para la conversión string-número
+const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];              //********te falta este */
+
+const wordToNumber = (valorPalabra) =>{
+  if (valorPalabra === '') {
+    currentValue.length
+  }
+}
+
+let stringValue = wordToNumber()
+console.log("🚀 ~ stringValue:", stringValue)
+
+
+const counterArray = mixedElements.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log("🚀 ~ counterArray:", counterArray)
+
+
+
 
 //?----------- Iteración #6: Valores únicos
 //! Crea una función que reciba por parámetro un array y compruebe si existen elementos duplicados, 
@@ -68,11 +84,17 @@ const duplicates = [
   'pasta',
   'soda'
   ];
-  function removeDuplicates(param) {
-  // insert code
-  }
 
+  let stringNoRepetidos = {}
 
+  duplicates.forEach(function (elemento) {
+    stringNoRepetidos[elemento] = elemento;
+  });
+  
+  let conjuntoBien = Object.values(stringNoRepetidos);
+  
+  console.log(conjuntoBien);
+  
   
 //?----------- Iteración #7: Buscador de números
 //! Crea una función que reciba por parámetro un array y el valor que desea comprobar que existe dentro de dicho array - comprueba si existe el elemento, 
@@ -123,7 +145,7 @@ const nameFinder = [
    
   
      
-   /* const repeatCounter =(arrayPalabras, palabrasContar) => {          //----------- este sirve si das una palabra, pero no sale de forma automática
+   const repeatCounter =(arrayPalabras, palabrasContar) => {          //**----------- este sirve si das una palabra, pero no sale de forma automática
       let acc = 0                                                      //----------- revisar código
       for (let palabra of arrayPalabras) {
        palabra.toLowerCase() === palabrasContar.toLowerCase() && acc++;
@@ -133,9 +155,10 @@ const nameFinder = [
     
     }
 
-    const resultado = repeatCounter(counterWords, 'code')
-    console.log("🚀 ~ resultado:", resultado)*/
-    
+    const resultado2 = repeatCounter(counterWords)
+    console.log("🚀 ~ resultado2:", resultado2)
+   
+    // mirar hasOwnProperty
 
     
     
