@@ -4,8 +4,9 @@
 
 const products = ['Camiseta de Pokemon', 'Pantalón coquinero', 'Gorra de gansta', 'Camiseta de Basket', 'Cinrurón de Orión', 'AC/DC Camiseta']
 
-
-
+for (let i = 0; i < products.length; i++) {
+    console.log(products[i].includes('Camiseta'));
+  }
 
 //?----------- Iteración #2: Condicionales especiales
 //!Comprueba en cada uno de los usuarios que tenga al menos dos trimestres aprobados y añade la propiedad isApproved a true o false en consecuencia. 
