@@ -12,7 +12,7 @@ for (let i = 0; i < products.length; i++) {
 //!Comprueba en cada uno de los usuarios que tenga al menos dos trimestres aprobados y añade la propiedad isApproved a true o false en consecuencia. 
 //!Una vez lo tengas compruébalo con un console.log.
 
-/*const alumns = [
+const alumns = [
     {name: 'Pepe Viruela', T1: false, T2: false, T3: true},
     {name: 'Lucia Aranda', T1: true, T2: false, T3: true},
     {name: 'Juan Miranda', T1: false, T2: true, T3: true},
@@ -20,7 +20,15 @@ for (let i = 0; i < products.length; i++) {
     {name: 'Raquel Benito', T1: true, T2: true, T3: true}
     ]
 
-*/
+  if (alumns.T1 === true || alumns.T2 === true || alumns.T3 === true) {
+      alumns.isApproved = true
+    } else {
+    alumns.isApproved = false
+    }  
+
+console.log("🚀 ~ alumns:", alumns)    
+
+
 //?----------- Iteración #3: Probando For...of
 //! Usa un bucle forof para recorrer todos los destinos del array. Imprime en un console.log sus valores.
 
@@ -57,4 +65,29 @@ const placesToTravel2 = [
     {id: 59, name: 'Madagascar'}
 ]
 
-//for (let i = 0; )
+for (let i = placesToTravel2.length - 1; i >= 0; i--) {
+  if (placesToTravel2[i].id === 11 || placesToTravel2[i].id === 40) {
+      placesToTravel2.splice(i, 1);
+  }
+}
+
+console.log(placesToTravel2);   //probar otra opción con delete si tienes tiempo
+
+
+//?----------- Iteración #6: Mixed For...of e includes
+//! Usa un bucle for...of para recorrer todos los juguetes y elimina los que incluyan la palabra gato. 
+//! Recuerda que puedes usar la función .includes() para comprobarlo
+
+const toys = [
+  {id: 5, name: 'Buzz MyYear'},
+  {id: 11, name: 'Action Woman'},
+  {id: 23, name: 'Barbie Man'},
+  {id: 40, name: 'El gato con Guantes'},
+  {id: 40, name: 'El gato felix'}
+  ]
+
+const toysFilter = []
+for (clave of toys) {
+  toys.splice()
+}
+
