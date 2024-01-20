@@ -12,10 +12,10 @@ const movies = [
 
 let categoriaLista = []
 
-for (let movie of movies) {//-------> Primer paso: entrar en el array. Buscamos las películas dentro de Movies
-    for(let category of movie.categories){//---------> Segundo paso: entrar en el objeto. Buscamos la categoría dentro de cada movie
-        if(!categoriaLista.includes(category)) { //---------> Tercer paso: hay que meter las categorías sin repetir dentro de categoriaLista. Para ello, empezamos 
-        categoriaLista.push(category)//---------------------> negando el if para qu entienda que si NO hay esa categoría la lance dentro del array vacío
+for (let movie of movies) {//*-------> Primer paso: entrar en el array. Buscamos las películas dentro de Movies
+    for(let category of movie.categories){//*---------> Segundo paso: entrar en el objeto. Buscamos la categoría dentro de cada movie
+        if(!categoriaLista.includes(category)) { //*---------> Tercer paso: hay que meter las categorías sin repetir dentro de categoriaLista. Para ello, empezamos 
+        categoriaLista.push(category)//*---------------------> negando el if para qu entienda que si NO hay esa categoría la lance dentro del array vacío
     }
     }
 }
@@ -85,15 +85,15 @@ console.log("🚀 ~ sonidosFavoritos:", sonidosFavoritos)
 let totalSonido = []
 let totalVolumen = []
 
-for (let user of users){                                            //* sacas los usuarios de users
+for (let user of users){                                            //* accedes a los usuarios de users
     for(let sound in user.favoritesSounds){                         //* accedes a los sonidos dentro de favoritesSounds
-    let volume = user.favoritesSounds[sound].volume                 //* estableces que volumen será el volumen de cada 
-    totalVolumen += volume
-    totalSonido ++;
+    let volume = user.favoritesSounds[sound].volume                 //* obtienes el volumen
+    totalVolumen += volume                                          //* sumas el volumen al total de volumenes dentro de totalVolumen
+    totalSonido ++;                                                 //* aumentas en 1 el contador de sonidos
     }
 }
 
-let mediaVolumen = totalVolumen / totalSonido
+let mediaVolumen = totalVolumen / totalSonido                      
 
 console.log(`La media es ${mediaVolumen}`)
     // For in para sacar las claves, For of para los valores
@@ -134,18 +134,26 @@ const users2 = [
     }
     },
     ]
-
+//----------------------- Waves: 3, rain: 1, firecamp: 3, shower: 2, train: 2, wind: 1
 let usuarios2 = []
+
+let sound = []
+   
     
 for (let user of users2){
-    if(!usuarios2.includes(user)){
-    usuarios2.push(user)
+    for (let sound in users2.favoritesSounds){
+        /*let sonido = user.favoritesSounds.sound
+        sound += sonido
+        usuarios2++*/
+        console.log(`${sound}: ${users2.favoritesSounds[sound]}`)
     }
 }//-------------------------------> se han extraido los usuarios
 
-let accSound = []
+console.log("🚀 ~ usuarios2:", usuarios2)
 
-for (let sound in user){
+console.log("🚀 ~ sound:", sound)
+/*
+for (let sound in usuarios2){
     acc = 0
     if (!accSound.includes(sound)){
          acc++
@@ -153,4 +161,71 @@ for (let sound in user){
        
     }
 }
-console.log("🚀 ~ accSound:", accSound)
+console.log("🚀 ~ accSound:", accSound)*/
+
+//?----------- Iteración #4: Métodos findArrayIndex
+//! Crea una función llamada findArrayIndex que reciba como parametros un array de textos y un texto y devuelve la posición del array cuando 
+//! el valor del array sea igual al valor del texto que enviaste como parametro. Haz varios ejemplos y compruebalos.
+
+let arrAnimales = ['Caracol', 'Mosquito', 'Salamandra', 'Ajolote'] //----- usar indexOf()
+console.log(arrAnimales.indexOf('Caracol'))
+
+function findArrayIndex(array, text){
+    let index = array.indexOf(text)
+    return index;
+}
+
+let indexPalabra = findArrayIndex(arrAnimales, 'Mosquito')//-----------> resultado = 1
+console.log("🚀 ~ indexPalabra:", indexPalabra)
+
+let indexPalabra2 = findArrayIndex(arrAnimales, 'Perro')//-----------> resultado = -1----- esa palabra no existe
+console.log("🚀 ~ indexPalabra2:", indexPalabra2)
+
+let indexPalabra3 = findArrayIndex(arrAnimales, 'Ajolote')//-----------> resultado = 3
+console.log("🚀 ~ indexPalabra3:", indexPalabra3)
+
+
+//?----------- Iteración #5: Función rollDice
+//! Crea una función llamada rollDice() que reciba como parametro el numero de caras que queramos que tenga el dado que deberá silumar 
+//! el codigo dentro de la función. Como hemos dicho, que la función use el parametro para simular una tirada de dado y retornar el resultado. 
+//! Si no se te ocurre como hacer un numero aleatorio no te preocupes! busca información sobre la función de javascript Math.random();
+
+/** Math.random():
+ * Si no se le da parámetros hará un número decimal random entre 0 y 1
+ * Para que sea un número entero se puede usar Math.floor() que redondea a la alza pero empieza a contar desde 0. Habría que poner +1 para que empiece a contar desde 1
+ * Entonces habría que usar Math.ceil() que empieza desde el 1
+ */
+
+let rollDice = () => {
+    return Math.ceil(Math.random() * 6) //*-----------> EJEMPLO CON Math.ceil()
+}
+
+let tirada = rollDice()
+console.log("🚀 ~ tirada:", tirada)
+
+let rollDice2 = () => {
+   return Math.floor(Math.random() * 6) + 1 //*-----------> EJEMPLO CON Math.ceil()
+}
+
+let tirada2 = rollDice2()
+console.log("🚀 ~ tirada2:", tirada2)
+
+//?----------- Iteración #6: Función swap
+//! Crea una función llamada swap() que reciba un array y dos parametros que sean indices del array. La función deberá intercambiar 
+//! la posición de los valores de los indices que hayamos enviado como parametro. Retorna el array resultante.
+
+let nombresGraciosos = ['Mesirve', 'Cristiano Romualdo', 'Fernando Muralla', 'Ronalguiño']
+
+let swap = (arr, index1, index2) => {
+    [arr[index1], arr[index2]] = [arr[index2], arr[index1]]//*-----> hecho mediante destructuring
+}
+
+/*let swap = (arr, index1, index2) => { //*--------> otro método
+    let x = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2] = x;
+}*/
+
+let cambioIndex = swap(nombresGraciosos, 0, 3)
+console.log("🚀 ~ nombresGraciosos:", nombresGraciosos)//*------> console.log del array para ver el cambio, si lo haces de cambioIndex sale undefined
+
