@@ -53,19 +53,18 @@ const animalFunction = () => {
     return {name: 'Bengal Tiger', race: 'Tiger'}
 };
 
-function animalFunction2 ( { name, race } ) {
-    console.log(`Mi nombre es ${name} y soy ${race}`); //*---------------> revisa! No sé qué es lo que tienes mal
-}
+let {name, race} = animalFunction() //*-----> si no pones estos paréntesis no funciona
 
-animalFunction2(animalFunction)
+
+console.log(`Mi nombre es ${name} y soy ${race}`); 
 
 //! 2.3 En base al siguiente javascript, usa destructuring para crear las variables name y itv con sus respectivos valores. 
 //! Posteriormente crea 3 variables usando igualmente el destructuring para cada uno de los años y comprueba que todo esta bien imprimiendolo.
 
-const car = {name: 'Mazda 6', itv: [2015, 2011, 2020] }
+const car = {name2: 'Mazda 6', itv: [2015, 2011, 2020] }
 
-//let { name, itv} = car
-console.log("🚀 ~ name:", name)
+const {name2, itv} = car
+console.log("🚀 ~ name2:", name2)
 console.log("🚀 ~ itv:", itv)
 
 let [year1, year2, year3] = itv
@@ -140,13 +139,43 @@ console.log(nombreUsuario2)
 //! añade al valor de .name el string ' (Visitado)' cuando el valor de la propiedad isVisited = true.
 
 const cities = [
-	{isVisited:true, name: 'Tokyo'}, 
-	{isVisited:false, name: 'Madagascar'},
-	{isVisited:true, name: 'Amsterdam'}, 
-	{isVisited:false, name: 'Seul'}
+	{isVisited:true, name3: 'Tokyo'}, 
+	{isVisited:false, name3: 'Madagascar'},
+	{isVisited:true, name3: 'Amsterdam'}, 
+	{isVisited:false, name3: 'Seul'}
 ];
 //------------> PRIMERO LA LISTA DE NAME
 
 
 
+/*let listaCiudades = cities.map(name3 => {
+	if(cities.isVisited === true){
+		name3.push("isVisited" = true)
+	}
+})*/
 
+
+//?----------- Iteración #5: Filter
+//! 5.1 Dado el siguiente array, utiliza .filter() para generar un nuevo array con los valores que sean mayor que 18
+
+const ages = [22, 14, 24, 55, 65, 21, 12, 13, 90];
+
+let mayorEdad = ages.filter(number => number > 18)
+console.log("🚀 ~ mayorEdad:", mayorEdad)
+
+//! 5.2 Dado el siguiente array, utiliza .filter() para generar un nuevo array con los valores que sean par.
+const ages2 = [22, 14, 24, 55, 65, 21, 12, 13, 90];
+
+let edadPar = ages2.filter(number => number % 2 === 0)
+console.log("🚀 ~ edadPar:", edadPar)
+
+//! 5.3 Dado el siguiente array, utiliza .filter() para generar un nuevo array con los streamers que tengan el gameMorePlayed = 'League of Legends'.
+const streamers = [
+	{name: 'Rubius', age: 32, gameMorePlayed: 'Minecraft'},
+	{name: 'Ibai', age: 25, gameMorePlayed: 'League of Legends'}, 
+	{name: 'Reven', age: 43, gameMorePlayed: 'League of Legends'},
+	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
+];
+
+let gameStreamed = streamers.filter(game => game === 'League of Legends')
+console.log("🚀 ~ gameStreamed:", gameStreamed)
