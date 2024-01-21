@@ -190,7 +190,93 @@ const streamers2 = [
 	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
 ];
 
-let nombreStreamer = streamers2.name.filter(streamers2 =>
-	streamers2.name.includes('u')
-	)
-	console.log("🚀 ~ nombreStreamer:", nombreStreamer)
+let nombreStreamer = streamers2.filter(streamers => streamers.name.includes('u'))
+
+console.log("🚀 ~ nombreStreamer:", nombreStreamer)
+
+//! 5.5 utiliza .filter() para generar un nuevo array con los streamers que incluyan el caracter 'Legends' en su propiedad .gameMorePlayed. 
+//! Recomendamos usar la funcion .includes() para la comprobación.
+//! Además, pon el valor de la propiedad .gameMorePlayed a MAYUSCULAS cuando .age sea mayor que 35.
+
+
+let nombreStreamer2 = streamers2.filter(streamers => streamers.gameMorePlayed.includes('Legend'))
+
+let streamersUpper = nombreStreamer2.map(nombreStreamer2=> { 
+	if (nombreStreamer2.age > 35) {
+	nombreStreamer2.gameMorePlayed = nombreStreamer2.gameMorePlayed.toUpperCase()
+}
+return nombreStreamer2
+})
+console.log("🚀 ~ streamersUpper ~ streamersUpper:", streamersUpper)
+
+//! 5.6 Dado el siguiente html y javascript, utiliza .filter() para mostrar por consola los streamers que incluyan la palabra introducida en el input. 
+//!De esta forma, si introduzco 'Ru' me deberia de mostrar solo el streamer 'Rubius'. Siintroduzco 'i', me deberia de mostrar el streamer 'Rubius' e 'Ibai'.
+
+
+//?----------- Iteración #6: Find
+//! 6.1 Dado el siguiente array, usa .find() para econtrar el número 100.
+const numbers = [32, 21, 63, 95, 100, 67, 43];
+
+let findñNumber = numbers.find(number => number === 100)
+console.log("🚀 ~ findñNumber:", findñNumber)
+
+//! 6.2 Dado el siguiente array, usa .find() para econtrar la pelicula del año 2010.
+const movies = [
+	{title: 'Madagascar', stars: 4.5, date: 2015},
+	{title: 'Origen', stars: 5, date: 2010},
+	{title: 'Your Name', stars: 5, date: 2016}
+];
+
+let findMovie = movies.find(movie => movie.date === 2010)
+console.log("🚀 ~ findMovie:", findMovie)
+
+//! 6.3 Dado el siguiente javascript, usa .find() para econtrar el alien de nombre 'Cucushumushu' y la mutación 'Porompompero'. 
+//! Una vez que los encuentres, usa spread operator para fusionarlos teniendo en cuenta que el objeto de la mutación 
+//! lo queremos meter en la propiedad .mutation del objeto fusionado.
+
+const aliens = [
+	{name: 'Zalamero', planet: 'Eden', age: 4029},
+	{name: 'Paktu', planet: 'Andromeda', age: 32},
+	{name: 'Cucushumushu', planet: 'Marte', age: 503021}
+];
+const mutations = [
+	{name: 'Porompompero', description: 'Hace que el alien pueda adquirir la habilidad de tocar el tambor'},
+	{name: 'Fly me to the moon', description: 'Permite volar, solo y exclusivamente a la luna'},
+	{name: 'Andando que es gerundio', description: 'Invoca a un señor mayor como Personal Trainer'}
+];
+
+
+//?----------- Iteración #7: Reduce
+//! 7.1 Dado el siguiente array, haz una suma de todos las notas de los examenes de los alumnos usando la función .reduce().
+
+const exams = [
+    {name: 'Yuyu Cabeza Crack', score: 5}, 
+    {name: 'Maria Aranda Jimenez', score: 1}, 
+    {name: 'Cristóbal Martínez Lorenzo', score: 6}, 
+    {name: 'Mercedez Regrera Brito', score: 7},
+    {name: 'Pamela Anderson', score: 3},
+    {name: 'Enrique Perez Lijó', score: 6},
+    {name: 'Pedro Benitez Pacheco', score: 8},
+    {name: 'Ayumi Hamasaki', score: 4},
+    {name: 'Robert Kiyosaki', score: 2},
+    {name: 'Keanu Reeves', score: 10}
+];
+
+const reduceScore = exams.reduce((acc, exam) => acc + exam.score, 0)
+console.log("🚀 ~ reduceScore:", reduceScore)
+
+//! 7.2 Dado el mismo array, haz una suma de todos las notas de los examenes de los alumnos que esten aprobados usando la función .reduce().
+
+let filtradoAprobados = exams.filter(exam => {
+	if (exam.score > 5){
+		exams.score = exams.reduce((acc, exam) => acc + exam, 0) //*-------------> busca el error
+	}
+	return exams
+})
+
+console.log("🚀 ~ filtradoAprobados ~ filtradoAprobados:", filtradoAprobados)
+	
+
+
+
+//! 7.3 Dado el mismo array, haz la media de las notas de todos los examenes .reduce().
