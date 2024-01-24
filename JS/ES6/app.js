@@ -144,15 +144,13 @@ const cities = [
 	{isVisited:true, name3: 'Amsterdam'}, 
 	{isVisited:false, name3: 'Seul'}
 ];
-//------------> PRIMERO LA LISTA DE NAME
 
-
-
-/*let listaCiudades = cities.map(name3 => {
+/*let listaCiudades = cities.map(name => {
 	if(cities.isVisited === true){
-		name3.push("isVisited" = true)
+		cities.name3 = `${cities.name3} Visitado`
 	}
 })*/
+
 
 
 //?----------- Iteración #5: Filter
@@ -245,6 +243,14 @@ const mutations = [
 	{name: 'Andando que es gerundio', description: 'Invoca a un señor mayor como Personal Trainer'}
 ];
 
+const alienVasco = aliens.find(alien => alien.name === 'Cucushumushu')
+console.log("🚀 ~ alienVasco:", alienVasco)
+
+const mutationTambor = mutations.find(mutation => mutation.name === 'Porompompero')
+console.log("🚀 ~ mutationTambor:", mutationTambor)
+
+const actualizacion = {...alienVasco,... mutationTambor}
+console.log("🚀 ~ actualizacion:", actualizacion) //*---------------> preguntar
 
 //?----------- Iteración #7: Reduce
 //! 7.1 Dado el siguiente array, haz una suma de todos las notas de los examenes de los alumnos usando la función .reduce().
@@ -267,16 +273,43 @@ console.log("🚀 ~ reduceScore:", reduceScore)
 
 //! 7.2 Dado el mismo array, haz una suma de todos las notas de los examenes de los alumnos que esten aprobados usando la función .reduce().
 
-let filtradoAprobados = exams.filter(exam => {
-	if (exam.score > 5){
-		exams.score = exams.reduce((acc, exam) => acc + exam, 0) //*-------------> busca el error
-	}
-	return exams
-})
+let filtradoAprobados = exams
+	.filter(exam => exam.score >= 5)
+	.reduce((acc, exam) => acc + exam.score, 0)
 
 console.log("🚀 ~ filtradoAprobados ~ filtradoAprobados:", filtradoAprobados)
-	
-
 
 
 //! 7.3 Dado el mismo array, haz la media de las notas de todos los examenes .reduce().
+
+if (exams.length > 0){
+	const sumas = exams.reduce((acc, exam) => acc + exam.score, 0) 
+	const media = sumas / exams.length
+	console.log("🚀 ~ media:", media)
+}
+//*------------------> si no haces el bucle no funciona
+
+//?----------- Iteración #8: Bonus
+//! 8.1 Dado el siguiente javascript filtra los videojuegos por gender = 'RPG' usando .filter() y usa .reduce() para conseguir la media de sus .score. 
+//! La función .find() también podría ayudarte para el contrar el genero 'RPG' en el array .gender.
+
+const videogames = [
+    {name: 'Final Fantasy VII', genders: ['RPG'], score: 9.5},
+    {name: 'Assasins Creed Valhala', genders: ['Aventura', 'RPG'], score: 4.5},
+    {name: 'The last of Us 2', genders: ['Acción', 'Aventura'], score: 9.8},
+    {name: 'Super Mario Bros', genders: ['Plataforma'], score: 8.5},
+    {name: 'Genshin Impact', genders: ['RPG', 'Aventura'], score: 7.5},
+    {name: 'Legend of Zelda: Breath of the wild', genders: ['RPG', 'La cosa más puto bonita que he visto nunca'], score: 10},
+]
+
+const gameRpg = videogames.filter(videogame => videogame.genders.includes('RPG'))
+console.log("🚀 ~ gameRpg:", gameRpg)
+
+const gamesFiltrados = gameRpg.reduce((acc, value) => acc + value.score, 0) / gameRpg.length;
+console.log("🚀 ~ gamesFiltrados:", gamesFiltrados)
+
+
+
+
+
+	
