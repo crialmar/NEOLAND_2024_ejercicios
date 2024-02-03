@@ -2,54 +2,54 @@ const express = require("express");
 const dotenv = require("dotenv");
 const { connect } = require("./src/utils/db");
 
+// creamos el servidor web
+const app = express();
 
-const app = express(); //*---> creamos el servidor web
+// vamos a configurar dotenv para poder utilizar las variables d entorno del .env
+dotenv.config();
 
-dotenv.config(); //*---> conficuramos dotenv para poder utilizar las variables de entorno del .env
-
-
-//? CONECTAR CON BASE DATOS
+//! conectamos con la base de datos
 connect();
 
-//? CONECTAMOS CLOUDINARY
+//! ----------------- CONFIGURAR CLOUDINARY--------
 const { configCloudinary } = require("./src/middleware/files.middleware");
 
 configCloudinary();
 
-//? VARIABLES CONSTANTES --> PORT
+//! -----------------VARIABLES CONSTANTES --> PORT
+
 const PORT = process.env.PORT;
 
-//? CORS
+//! -----------------------CORS-------------
 const cors = require("cors");
 app.use(cors());
 
-//? Limitaciones de cantidad en el back end
+//! ------------------ limitaciones de cantidad en el back end
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: false }));
- 
-//? RUTAS
+
+//! -----------------> RUTAS
 const UserRoutes = require("./src/api/routes/User.routes");
 app.use("/api/v1/users/", UserRoutes);
 
-
-//? Generamos un error de cuando no se encuentre la ruta (404)
+//! -------------------> generamos un error de cuando no see encuentre la ruta
 app.use("*", (req, res, next) => {
-    const error = new Error("Route not found");
-    error.status = 404;
-    return next(error);
-  });
-  
-//? cuando el servidor crachea metemos un 500 
+  const error = new Error("Route not found");
+  error.status = 404;
+  return next(error);
+});
+
+//! ------------------> cuando el servidor crachea metemos un 500 ----------
 app.use((error, req, res) => {
-return res
+  return res
     .status(error.status || 500)
     .json(error.message || "unexpected error");
 });
 
-//? ESCUCHAMOS EN EL PUERTO EL SERVIDOR WEB
+//! ------------------ ESCUCHAMOS EN EL PUERTO EL SERVIDOR WEB-----
 
 // esto de aqui  nos revela con que tecnologia esta hecho nuestro back
 app.disable("x-powered-by");
 app.listen(PORT, () =>
-    console.log(`Server listening on port 👌🔍 http://localhost:${PORT}`)
+  console.log(`Server listening on port 👌🔍 http://localhost:${PORT}`)
 );
