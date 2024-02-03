@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const jwt = require('jsonwebtoken');
 const { connect } = require("./src/utils/db");
 
 // creamos el servidor web
