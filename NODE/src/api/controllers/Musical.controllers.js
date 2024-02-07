@@ -2,6 +2,7 @@ const Actores = require("../models/Actores.model");
 const Musical = require("../models/Musical.model");
 
 
+
 //! ---------------------------------------------------------------------
 //? -------------------------------POST create --------------------------
 //! ---------------------------------------------------------------------
@@ -92,7 +93,7 @@ const toggleActores = async (req, res, next) => { //*------> aquí metemos los a
               });
 
               try {
-                await Actores.findByIdAndUpdate(Actores, {
+                await Actores.findByIdAndUpdate(actores, { //!
                   $pull: { Musical: id },
                 });
               } catch (error) {
@@ -113,8 +114,8 @@ const toggleActores = async (req, res, next) => { //*------> aquí metemos los a
                 $push: { Actores: Actores }, //*------> si no lo incluye lo echamos
               });
               try {
-                await Actores.findByIdAndUpdate(Actores, {
-                  $push: { Musical: id }, 
+                await Actores.findByIdAndUpdate(id, {
+                  $push: { Musical: Musical }, 
                 });
               } catch (error) {
                 res.status(404).json({
@@ -151,4 +152,117 @@ const toggleActores = async (req, res, next) => { //*------> aquí metemos los a
 };
 
 
-module.exports = { createMusical, toggleActores};
+//! ---------------------------------------------------------------------
+//? -------------------------------get by id --------------------------
+//! ---------------------------------------------------------------------
+const getById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const musicalById = await Musical.findById(id);
+    if (musicalById) {
+      return res.status(200).json(musicalById);
+    } else {
+      return res.status(404).json("no se ha encontrado el musical");
+    }
+  } catch (error) {
+    return res.status(404).json(error.message);
+  }
+};
+
+//! ---------------------------------------------------------------------
+//? -------------------------------get all ------------------------------
+//! ---------------------------------------------------------------------
+
+const getAll = async (req, res, next) => {
+  try {
+    const allMusicales = await Musical.find().populate("Actores");//* el find nos devuelve un array 
+    
+    if (allMusicales.length > 0) {
+      return res.status(200).json(allMusicales);
+    } else {
+      return res.status(404).json("no se han encontrado musicales");
+    }
+  } catch (error) {
+    return res.status(404).json({
+      error: "error al buscar - lanzado en el catch",
+      message: error.message,
+    });
+  }
+};
+
+//! ---------------------------------------------------------------------
+//? -------------------------------get by name --------------------------
+//! ---------------------------------------------------------------------
+const getByTitle = async (req, res, next) => { //*----> lo has cambiado por title, no tienes muy claro que vaya a funcionar
+  try {
+    const { title } = req.params;
+
+    /// nos devuelve un array de elementos
+    const MusicalesByTitle = await Musical.find({ title });
+    if (MusicalesByTitle.length > 0) {
+      return res.status(200).json(MusicalesByTitle);
+    } else {
+      return res.status(404).json("No se ha encontrado");
+    }
+  } catch (error) {
+    return res.status(404).json({
+      error: "error al buscar por nombre capturado en el catch",
+      message: error.message,
+    });
+  }
+};
+
+//! ---------------------------------------------------------------------
+//? -------------------------------DELETE -------------------------------
+//! ---------------------------------------------------------------------
+
+const deleteMusical = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const Musical = await Musical.findByIdAndDelete(id);
+    if (Musical) {
+      // lo buscamos para vr si sigue existiendo o no
+      const finByIdMusical = await Musical.findById(id);
+
+      try {
+        const test = await Actores.updateMany(
+          { Musical: id },
+          { $pull: { Musical: id } }
+        );
+        console.log(test);
+
+        try {
+          await User.updateMany(
+            { MusicalFav: id },
+            { $pull: { MusicalFav: id } }
+          );
+
+          return res.status(finByIdMusical ? 404 : 200).json({
+            deleteTest: finByIdMusical ? false : true,
+          });
+        } catch (error) {
+          return res.status(404).json({
+            error: "error catch update User",
+            message: error.message,
+          });
+        }
+      } catch (error) {
+        return res.status(404).json({
+          error: "error catch update Musical",
+          message: error.message,
+        });
+      }
+    }
+  } catch (error) {
+    return res.status(404).json(error.message);
+  }
+};
+
+module.exports = { 
+  createMusical, 
+  toggleActores, 
+  getAll, 
+  getById, 
+  getByTitle,
+  deleteMusical
+};

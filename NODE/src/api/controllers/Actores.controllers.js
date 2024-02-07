@@ -74,7 +74,7 @@ const getById = async (req, res, next) => {
     if (ActoresById) {
       return res.status(200).json(ActoresById);
     } else {
-      return res.status(404).json("no se ha encontrado el character");
+      return res.status(404).json("no se ha encontrado el actor/actriz");
     }
   } catch (error) {
     return res.status(404).json(error.message);
@@ -145,7 +145,7 @@ const deleteActores = async (req, res, next) => {
         console.log(test);
 
         try {
-          await User.updateMany(
+          await User.updateMany( //*------> se podría poner Musical en vez de User?
             { ActoresFav: id },
             { $pull: { ActoresFav: id } }
           );
