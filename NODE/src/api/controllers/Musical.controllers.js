@@ -67,7 +67,7 @@ const createMusical = async (req, res, next) => {
 const toggleActores = async (req, res, next) => { //*------> aquí metemos los actores en el array del modelo de Musical
   try {
     const { id } = req.params; //*-----> id del musical que queremos actualizar
-    const { Actores } = req.body; //* -----> idDeLosActores enviaremos esto por el req.body "12412242253,12535222232,12523266346"
+    const { actores } = req.body; //* -----> idDeLosActores enviaremos esto por el req.body "12412242253,12535222232,12523266346"
   
     const musicalById = await Musical.findById(id); //*-----> buscar si existe el musical
 
@@ -76,7 +76,7 @@ const toggleActores = async (req, res, next) => { //*------> aquí metemos los a
        * separando las posiciones donde en el string habia una coma
        * se hace mediante el metodo del split
        */
-      const arrayIdActores = Actores.split(","); //*------> uso de split para convertir los sting en array
+      const arrayIdActores = actores.split(","); //*------> uso de split para convertir los sting en array
 
       /** recorremos este array que hemos creado y vemos si tenemos que:
        * 1) ----> sacar el actor si ya lo tenemos en el back
@@ -84,17 +84,17 @@ const toggleActores = async (req, res, next) => { //*------> aquí metemos los a
        */
 
       Promise.all(
-        arrayIdActores.map(async (Actores, index) => {
-          if (musicalById.Actores.includes(Actores)) { //!------> BORRAR DEL ARRAY DE ACTORES EL ACTOR/ACTRIZ DENTRO DEL MUSICAL
+        arrayIdActores.map(async (actor, index) => {
+          if (musicalById.actores.includes(actor)) { //!------> BORRAR DEL ARRAY DE ACTORES EL ACTOR/ACTRIZ DENTRO DEL MUSICAL
             
             try {
               await Musical.findByIdAndUpdate(id, { //*----> dentro de clave actores quiero sacar el id del elemento que recorro
-                $pull: { Actores: Actores },
+                $pull: { actores: actor },
               });
 
               try {
-                await Actores.findByIdAndUpdate(actores, { //!
-                  $pull: { Musical: id },
+                await Actores.findByIdAndUpdate(actor, { 
+                  $pull: { musical: id },
                 });
               } catch (error) {
                 res.status(404).json({
@@ -111,11 +111,11 @@ const toggleActores = async (req, res, next) => { //*------> aquí metemos los a
           } else { //!------> METER EL ACTOR/ACTRIZ EN EL ARRAY DE ACTORES DE MUSICAL
             try {
               await Musical.findByIdAndUpdate(id, {
-                $push: { Actores: Actores }, //*------> si no lo incluye lo echamos
+                $push: { actores: actor }, //*------> si no lo incluye lo echamos
               });
               try {
                 await Actores.findByIdAndUpdate(id, {
-                  $push: { Musical: Musical }, 
+                  $push: { musical: id }, 
                 });
               } catch (error) {
                 res.status(404).json({
@@ -135,7 +135,7 @@ const toggleActores = async (req, res, next) => { //*------> aquí metemos los a
         .catch((error) => res.status(404).json(error.message))//*-------> es común encontrarse este .catch tras el .then
         .then(async () => { //!----------------------------------> los Promise.All se terminan con un .then
           return res.status(200).json({
-            dataUpdate: await Musical.findById(id).populate("Actores"),
+            dataUpdate: await Musical.findById(id).populate("actores"), //!------> hace referencia a la clave!!!!!!!
           });
         });
     } else {
@@ -175,7 +175,7 @@ const getById = async (req, res, next) => {
 
 const getAll = async (req, res, next) => {
   try {
-    const allMusicales = await Musical.find().populate("Actores");//* el find nos devuelve un array 
+    const allMusicales = await Musical.find().populate("actores");//* el find nos devuelve un array 
     
     if (allMusicales.length > 0) {
       return res.status(200).json(allMusicales);
@@ -219,23 +219,23 @@ const getByTitle = async (req, res, next) => { //*----> lo has cambiado por titl
 const deleteMusical = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const Musical = await Musical.findByIdAndDelete(id);
-    if (Musical) {
+    const musical = await Musical.findByIdAndDelete(id);
+    if (musical) {
       // lo buscamos para vr si sigue existiendo o no
       const finByIdMusical = await Musical.findById(id);
 
       try {
         const test = await Actores.updateMany(
-          { Musical: id },
-          { $pull: { Musical: id } }
+          { musical: id },
+          { $pull: { musical: id } }
         );
         console.log(test);
 
         try {
-          await User.updateMany(
-            { MusicalFav: id },
-            { $pull: { MusicalFav: id } }
-          );
+          /*await User.updateMany(
+            { musicalFav: id },
+            { $pull: { musicalFav: id } }
+          );*/
 
           return res.status(finByIdMusical ? 404 : 200).json({
             deleteTest: finByIdMusical ? false : true,
