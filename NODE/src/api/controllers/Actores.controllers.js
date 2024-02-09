@@ -238,7 +238,7 @@ const deleteActores = async (req, res, next) => {
 
         try {
           /*await User.updateMany( //*------> se podría poner Musical en vez de User?
-            { ActoresFav: id },
+            { ActoresFav: id }, //todo: se ha comentado esto ya que estaba dando problemas al intentarlo en insomnia
             { $pull: { ActoresFav: id } }
           );*/
 
