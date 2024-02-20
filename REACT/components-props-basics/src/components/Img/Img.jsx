@@ -1,6 +1,6 @@
 const Image = (referen, source, alt) => {
     return (
-      <image href={referen} src={source} alt={alt}
+      <a href={referen} src={source} alt={alt}
       />
     );
   };
