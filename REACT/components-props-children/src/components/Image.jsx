@@ -1,6 +1,6 @@
 /** hay que meter en el div style con width y height */
 
-export const Image = (
+const Image = (
     source,
     alterna,
     classita
@@ -12,4 +12,5 @@ export const Image = (
   )
 }
 
+export default Image
 

@@ -1,8 +1,8 @@
 import "./Footer.css"
 
- export const Footer = (props) => {
+  const Footer = (props) => {
   const {children} = props   
   return <footer>{children}</footer>
 }
-
+export default Footer
 
