@@ -2,9 +2,9 @@
 //import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Footer, H1, H2, Header, Image, Main } from './components'
+import {  H1, H2, Header, Image, Main } from './components'
 import Paragraph from './components/Paragraph'
-
+import { Footer } from './components/Footer'
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         </div>
       </Header>
       <Main> 
-        <H1 text= "SOY UNA LINDO TITULO"/> {/** EL TEXTO FORMARA PARTE DE UNA VARIBLE IRÍA ENTRE CORCHETES, PERO COMO NO ES EL CASO VA CON COMILLAS*/}
+        <H1 text= "SOY UN LINDO TITULO"/> {/** EL TEXTO QUE FORMA PARTE DE UNA VARIBLE IRÍA ENTRE CORCHETES, PERO COMO NO ES EL CASO VA CON COMILLAS*/}
         <H2 text= "Este es el subtitulo"/>
         <Paragraph text= "Con esto y un bizcocho tenemos un lindo párrafo"/>
       </Main>

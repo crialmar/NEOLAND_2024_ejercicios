@@ -1,8 +1,7 @@
 import "./Main.css"
 
-const Main = (props) => {
+export const Main = (props) => {
   const {children} = props
   return <main>{children}</main>
 }
 
-export default Main
