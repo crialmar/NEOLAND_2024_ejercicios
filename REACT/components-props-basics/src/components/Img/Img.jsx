@@ -1,9 +1,11 @@
-export const Image = (referen, source, alt) => {
+export const Image = ({src, alt, className}) => {
     return (
-      <a href={referen} src={source} alt={alt}
-      />
+      <div style={{width: '100px', height: '100px'}}>
+      <img src={src} className={className} alt={alt} />
+    </div>
     );
   };
+  
   
 
 

@@ -1,7 +1,6 @@
 import "./Main.css"
 
-export const Main = (props) => {
-  const {children} = props
+export const Main = ({children}) => {
   return <main>{children}</main>
 }
 

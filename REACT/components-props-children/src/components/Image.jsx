@@ -1,9 +1,8 @@
 /** hay que meter en el div style con width y height */
 
-export const Image = (
-    source,
+export const Image = ({source,//*----> ESTAMOS HACIENDO DESTRUCTUING DE ESTO
     alterna,
-    classita
+    classita}
 ) => {
   return (
     <div style={{width: '100px', height: '100px' }}>
@@ -12,5 +11,7 @@ export const Image = (
   )
 }
 
+/** EN EL APP DEBEMOS ESCRIBIR SOURCE, CLASSITA Y ALTERNA */
+//! CAMBIAR PARA PARECER MÁS PROFESIONAL
 
 

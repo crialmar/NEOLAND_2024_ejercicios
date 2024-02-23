@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { deleteHeroe, getHeroe } from "../data/data";
 import { HeroeDetail } from "./HeroeDetail";
 
-export default function Heroe() {
+export const Heroe = () => {
     const params = useParams();
     const navigate = useNavigate();
     const heroe = getHeroe(params.id);//*-----> aquí usamos el getById de data

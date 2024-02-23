@@ -1,9 +1,9 @@
-const SubTitle = (text) => {
+export const H2 = ({text}) => {
   return (
-    <h1>text={text}</h1>
+    <h2>{text}</h2>
   );
 };
 
-export default SubTitle;
+
 
 /** recibimos como prop el subtítulo que se introducirá en un futuro */

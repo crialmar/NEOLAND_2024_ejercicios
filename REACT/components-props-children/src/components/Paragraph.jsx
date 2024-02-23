@@ -1,6 +1,6 @@
 import "./Paragraph.css"
 
-const Paragraph = (text) => {
+const Paragraph = ({text}) => {
     return <p>{text}</p>;
   };
   

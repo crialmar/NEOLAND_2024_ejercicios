@@ -1,4 +1,12 @@
+
 main{
-    height: 65vh;
+    height: 60vh;
     width: 100vw;
+    display: inline-block;
+    flex-wrap: wrap;
+    align-items: center;
+
 }
+
+
+

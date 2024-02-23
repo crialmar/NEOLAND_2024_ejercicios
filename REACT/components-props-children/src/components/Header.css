@@ -1,4 +1,9 @@
 header{
-    height: 15vh;
+    height: 20vh;
     width: 100vw;
+    display: inline;
+    flex-wrap: wrap;
+    align-items: center;
+
 }
+

@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 //!------------- PAGES
 import { Heroe } from './pages/Heroe.jsx'
-import { HeroesDC } from './pages/HeroesDC.jsx'
+import { HeroesMarv } from './pages/HeroesMarv.jsx'
 import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
 
@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render( //*----> definiremo
       <Routes>
         <Route path='/' element={<App />}>
         <Route index element={<Home />} /> {/**Las rutas con index se renderizarán sobre el Outlet*/}
-          <Route path="heroes" element={<HeroesDC />} /> 
+          <Route path="heroes" element={<HeroesMarv/>} /> 
           <Route path='/heroe/:id' element={<Heroe />} />
           <Route path="about" element={<About />} />
           <Route

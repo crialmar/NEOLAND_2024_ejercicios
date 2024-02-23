@@ -2,11 +2,7 @@
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
-import buika from "https://res.cloudinary.com/dm8swv5zy/image/upload/v1708371074/dhico5kggdhwury93anb.jpg"
-import SubTitle from './components/H2/H2';
-import Paragraph from './components/Paragraph/Paragraph';
-import Image from './components/Img/Img';
-import H1 from './components/H1/H1';
+import { H1, H2, Image, Paragraph } from './components';
 
 
 function App() {
@@ -16,15 +12,10 @@ function App() {
   return (
     <>
       <div>
-      <H1>EJERCICIO 3</H1>
-      <SubTitle>A ver si este sale bien</SubTitle>
-      <Paragraph>
-        Por santa Buika que lo conseguimos
-      </Paragraph>
-        <Image href="https://res.cloudinary.com/dm8swv5zy/image/upload/v1708371074/dhico5kggdhwury93anb.jpg" 
-          src={buika}  alt="buika qr" >
-          {/** usamos como referencia el propio código original */}
-        </Image>
+      <H1 text= "EJERCICIO 3" />
+      <H2 text= "A ver si este sale bien"/>
+      <Paragraph text= "Por santa Buika que lo conseguimos" />
+      <Image src={"https://media.revistavanityfair.es/photos/6571f01e309371b97509bd54/16:9/w_2560%2Cc_limit/buika.jpg"} className="imgBuika" alt="buika qr" />
       </div>
       
     </>

@@ -1,6 +1,6 @@
-export const Paragraph = (text) => {
+export const Paragraph = ({text}) => {
     return (
-      <p>text={text}</p>
+      <p>{text}</p>
     );
   };
   
