@@ -241,7 +241,87 @@ const createMessage = async (req, res, next) => {
           return res.status(404).json(error.message);
         }
       } else if (findActor) { //? LOS MENSAJES SERÁN PÚBLICOS
+        try {
+          await User.findByIdAndUpdate(req.user._id, { //*----> para actualizar el modelo con el nuevo mensaje posteado
+            //*-----> MANTENEMOS USER PORQUE ES QUIEN HACE EL MENSAJE
+            $push: {
+              postedMessages: newMessage._id,
+            },
+          });
+
+          try {
+            await Actores.findByIdAndUpdate(idRecipient, { //*---> EN ESTE CASO ES ACTORES PORQUE ES EL RECIPIENTE
+              $push: {
+                commentsPublicByOther: newMessage._id,
+              },
+            });
+
+            return res.status(200).json({
+              userOwner: await User.findById(req.user._id).populate([
+                {
+                  path: "chats",
+                  model: Chat,
+                  populate: "comment userOne actores",
+                },
+              ]),
+              recipient: await Actores.findById(idRecipient),
+              comentario: newMessage._id,
+            });
+          } catch (error) {
+            return res.status(404).json({
+              error:
+                "error catch update quien recibe el comentario  -  commentsPublicByOther",
+              message: error.message,
+            });
+          }
+        } catch (error) {
+          return res.status(404).json({
+            error:
+              "error catch update quien hace el comentario  -  postedMessages",
+            message: error.message,
+          })
+        };
       } else if (findMusical) { //? LOS MENSAJES SERÁN PÚBLICOS
+        try {
+          await User.findByIdAndUpdate(req.user._id, { //*----> para actualizar el modelo con el nuevo mensaje posteado
+            //*-----> MANTENEMOS USER PORQUE ES QUIEN HACE EL MENSAJE
+            $push: {
+              postedMessages: newMessage._id,
+            },
+          });
+
+          try {
+            await Musical.findByIdAndUpdate(idRecipient, { //*---> EN ESTE CASO ES MUSICAL PORQUE ES EL RECIPIENTE
+              $push: {
+                commentsPublicByOther: newMessage._id,
+              },
+            });
+
+            return res.status(200).json({
+              userOwner: await User.findById(req.user._id).populate([
+                {
+                  path: "chats",
+                  model: Chat,
+                  populate: "comment userOne actores",
+                },
+              ]),
+              recipient: await Actores.findById(idRecipient),
+              comentario: newMessage._id,
+            });
+          } catch (error) {
+            return res.status(404).json({
+              error:
+                "error catch update quien recibe el comentario  -  commentsPublicByOther",
+              message: error.message,
+            });
+          }
+        } catch (error) {
+          return res.status(404).json({
+            error:
+              "error catch update quien hace el comentario  -  postedMessages",
+            message: error.message,
+          })
+        };
       } else {
         return res.status(404).json("el id no esta correcto");
       }

@@ -9,6 +9,7 @@ const randomCode = require("../../utils/randomCode");
 const sendEmail = require("../../utils/sendEmail");
 const { generateToken } = require("../../utils/token");
 const enumOk = require("../../utils/enumOk");
+const randomPassword = require("../../utils/randomPassword.JS");
 
 //! ------------------------------librerias--------------------------------
 const nodemailer = require("nodemailer");
@@ -20,7 +21,7 @@ const {
   setTestEmailSend,
   getTestEmailSend,
 } = require("../../state/state.data");
-const randomPassword = require("../../utils/randomPassword.JS");
+
 
 
 dotenv.config();
@@ -29,7 +30,7 @@ dotenv.config();
 //? ----------------------------REGISTER LARGO EN CODIGO ------------------------
 //? .............................................................................
 
-//* ------------------->CRUD es el acrónimo de "Crear, Leer, Actualizar y Borrar"
+//* -------------------> CRUD es el acrónimo de "Crear, Leer, Actualizar y Borrar"
 
 const registerLargo = async (req, res, next) => {
     //*------> lo primero que vamos hacer captura la imagen que previamente hemos subido en el middleaware
@@ -48,7 +49,7 @@ const registerLargo = async (req, res, next) => {
       let confirmationCode = randomCode();
       const { email, name } = req.body; //*----->  lo que enviamos por la parte del body de la request
   
-      //* ------> vamos a buscsar al usuario
+      //* ------> vamos a buscar al usuario
       const userExist = await User.findOne(
         { email: req.body.email },
         { name: req.body.name }

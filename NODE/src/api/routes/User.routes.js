@@ -1,4 +1,4 @@
-const { isAuth, isAuthAdmin } = require("../../middleware/auth.middleware");//*-----> no sabes muy bien qué hacer con esto
+const { isAuth, isAuthAdmin } = require("../../middleware/auth.middleware");
 const { upload } = require("../../middleware/files.middleware");
 const {
   registerLargo,
