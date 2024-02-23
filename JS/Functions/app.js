@@ -15,16 +15,23 @@ console.log(mayorNum)
 //!Completa la función que tomando un array de strings como argumento devuelva el más largo,   
 //!en caso de que dos strings tenga la misma longitud deberá devolver el primero.
 
-const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 'Spiderman', 'Captain M.'];    //----------------------
+const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 'Spiderman', 'Captain M.'];   
 
 
-/*function findLongestWord(string) {
-  const conjuntoPalabras = avengers.length
+function findLongestWord(string) {
+  let palabraLarga = string[0];
+  for (let i = 0; i < string.length; i++) {
+    if(string[i].length > string.length) {
+      palabraLarga = string[i];
+    }
+  }
+  return (palabraLarga);
   
 }
 
+let longestWord = findLongestWord(avengers)
+console.log("🚀 ~ longestWord:", longestWord)
 
-console.log(findLongestWord)*/
 
 //?----------- Iteración #3: Calcular la suma
 //! Calcular una suma puede ser tan simple como iterar sobre un array y sumar cada uno de los elementos.
@@ -32,7 +39,7 @@ console.log(findLongestWord)*/
 
 const numbers = [1, 2, 3, 5, 45, 37, 58];
 
-const sumNumbers = numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
+const sumNumbers = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
 console.log(sumNumbers)
 
@@ -41,7 +48,7 @@ console.log(sumNumbers)
 
 const numbers1 = [12, 21, 38, 5, 45, 37, 6];
 
-const promNumbers = numbers1.reduce((accumulator, currentValue) => accumulator + currentValue) / numbers1.length;
+const promNumbers = numbers1.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / numbers1.length;
 
 console.log("🚀 ~ promNumbers:", promNumbers)
 
@@ -51,21 +58,18 @@ console.log("🚀 ~ promNumbers:", promNumbers)
 
 const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];              //********te falta este */
 
-const wordToNumber = (valorPalabra) =>{
-  if (valorPalabra === '') {
-    currentValue.length
+const promedioTwo = (mixed) => {
+  let sum = 0;
+  for (let value of mixed ){
+    if (typeof (value) == 'number'){
+      sum += value
+    } else {
+      sum += value.length
+    }
   }
+  return sum;
 }
-
-let stringValue = wordToNumber()
-console.log("🚀 ~ stringValue:", stringValue)
-
-
-const counterArray = mixedElements.reduce((accumulator, currentValue) => accumulator + currentValue);
-console.log("🚀 ~ counterArray:", counterArray)
-
-
-
+console.log(promedioTwo(mixedElements));
 
 //?----------- Iteración #6: Valores únicos
 //! Crea una función que reciba por parámetro un array y compruebe si existen elementos duplicados, 
@@ -143,9 +147,29 @@ const nameFinder = [
     'code'
     ];
    
+    /*let cuenta = {}
+    cuenta.property1 = 0
+    counterWords.forEach(function (elemento) {
+      cuenta[elemento] = elemento;
+    });
+    let cuentaRepetida = Object.values(cuenta.hasOwnProperty);
+    console.log(cuentaRepetida);*/
+
+    const repeatCounter = (wordsArr) =>{
+      let repeatCounterMap = {}
   
-     
-   const repeatCounter =(arrayPalabras, palabrasContar) => {          //**----------- este sirve si das una palabra, pero no sale de forma automática
+      wordsArr.forEach(word => {
+          word in repeatCounterMap 
+              ? repeatCounterMap[word] += 1
+              : repeatCounterMap[word] = 1
+      })
+  
+      return repeatCounterMap
+    }
+  
+    console.log(repeatCounter(counterWords))
+
+   /*const repeatCounter =(arrayPalabras, palabrasContar) => {          //**----------- este sirve si das una palabra, pero no sale de forma automática
       let acc = 0                                                      //----------- revisar código
       for (let palabra of arrayPalabras) {
        palabra.toLowerCase() === palabrasContar.toLowerCase() && acc++;
@@ -153,12 +177,10 @@ const nameFinder = [
 
       return acc;
     
-    }
-
     const resultado2 = repeatCounter(counterWords)
-    console.log("🚀 ~ resultado2:", resultado2)
+    console.log("🚀 ~ resultado2:", resultado2)  }*/
    
-    // mirar hasOwnProperty
+   
 
     
     

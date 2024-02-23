@@ -4,9 +4,21 @@
 
 const products = ['Camiseta de Pokemon', 'Pantalón coquinero', 'Gorra de gansta', 'Camiseta de Basket', 'Cinrurón de Orión', 'AC/DC Camiseta']
 
+ for (let i = 0; i < products.length; i++) {
+    if (products[i].includes('Camiseta')) {
+      console.log(products[i]);
+    }
+  } //*-------------------------------------> con este aparece pero editas el array original. Probar de otra forma si tienes tiempo
+
+/*let productsFiltred = []
 for (let i = 0; i < products.length; i++) {
-    console.log(products[i].includes('Camiseta'));
-  }
+    let sinCamiseta = products[i].includes('Camiseta'); 
+    productsFiltred.push(sinCamiseta)
+    
+  }*/
+  
+
+//console.log(productsFiltred)
 
 //?----------- Iteración #2: Condicionales especiales
 //!Comprueba en cada uno de los usuarios que tenga al menos dos trimestres aprobados y añade la propiedad isApproved a true o false en consecuencia. 
@@ -20,13 +32,19 @@ const alumns = [
     {name: 'Raquel Benito', T1: true, T2: true, T3: true}
     ]
 
-  if (alumns.T1 === true || alumns.T2 === true || alumns.T3 === true) {
-      alumns.isApproved = true
-    } else {
-    alumns.isApproved = false
-    }  
+let alumnosAprobados = []
 
-console.log("🚀 ~ alumns:", alumns)    
+for (let alumn of alumns) {
+  if(alumn.T1 === true || alumn.T2 === true || alumn.T3 === true) {
+    alumn.isApproved = true
+  } else {
+  alumn.isApproved = false
+  } 
+  alumnosAprobados.push(alumn)
+}
+
+console.log("🚀 ~ alumnosAprobados:", alumnosAprobados)
+//console.log("🚀 ~ alumns:", alumns)    
 
 
 //?----------- Iteración #3: Probando For...of
@@ -35,11 +53,12 @@ console.log("🚀 ~ alumns:", alumns)
 const placesToTravel = ['Japon', 'Venecia', 'Murcia', 'Santander', 'Filipinas', 'Madagascar']
 
 for (let lugares of placesToTravel) {
-    console.log(lugares);
+    console.log("🚀 ~ lugares:", lugares)
+    
   }
 
 //?----------- Iteración #4: Probando For...in
-//!Usa un for...in para imprimir por consola los datos del alienígena.. Puedes usar este objeto:
+//! Usa un for...in para imprimir por consola los datos del alienígena.. Puedes usar este objeto:
 
 const alien = {
 name: 'Wormuck',
@@ -68,10 +87,12 @@ const placesToTravel2 = [
 for (let i = placesToTravel2.length - 1; i >= 0; i--) {
   if (placesToTravel2[i].id === 11 || placesToTravel2[i].id === 40) {
       placesToTravel2.splice(i, 1);
+      
   }
 }
 
-console.log(placesToTravel2);   //probar otra opción con delete si tienes tiempo
+console.log("🚀 ~ placesToTravel2:", placesToTravel2)  //*probar otra opción con delete si tienes tiempo
+  
 
 
 //?----------- Iteración #6: Mixed For...of e includes
@@ -87,7 +108,35 @@ const toys = [
   ]
 
 const toysFilter = []
-for (clave of toys) {
-  toys.splice()
+
+for (let clave of toys) {
+  if (!clave.name.includes("gato")) { //------------------- al poner ! delante de clave.name.includes() haces que signifique "si NO incluye gato en name..."
+    toysFilter.push(clave)
+  }
 }
 
+console.log("🚀 ~ toysFilter:", toysFilter)
+
+
+
+//?----------- Iteración #7: For...of avanzado
+//! Usa un bucle for...of para recorrer todos los juguetes y añade los que tengan más de 15 ventas (sellCount) 
+//! al array popularToys. Imprimelo por consola...
+
+const popularToys = [];
+const toys2 = [
+{id: 5, name: 'Buzz MyYear', sellCount: 10},
+{id: 11, name: 'Action Woman', sellCount: 24},
+{id: 23, name: 'Barbie Man', sellCount: 15},
+{id: 40, name: 'El gato con Guantes', sellCount: 8},
+{id: 40, name: 'El gato felix', sellCount: 35}
+]
+
+for (let dinero of toys2) {
+  if(dinero.sellCount > 15){
+    popularToys.push(dinero)
+    
+  }
+}
+
+console.log("🚀 ~ popularToys:", popularToys)

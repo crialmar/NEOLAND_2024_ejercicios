@@ -126,12 +126,12 @@ console.log(rickAndMortyCharacters2)
 const number1 = 10;
 const number2 = 20;
 const number3 = 2;
-/*
+
 if(number1 === 10){
     console.log('number1 es estrictamente igual a 10')
 }
 
-if (number2 /= number1 === 2) {
+if (number2 / number1 === 2) {
   console.log("number2 dividido entre number1 es igual a 2");
 }
 
@@ -153,7 +153,7 @@ if (number3 * 5 == number1 && number1 * 2 == number2) {
 
 if (number2 * 2 == number1 || number1 / 5 == number3) {
   console.log("number2 entre 2 es igual a number1 O number1 entre 5 es igual a number3");
-}*/
+}
 
 //?----------- Iteración #6: Bucles
 /*
@@ -180,50 +180,10 @@ for (let bucle = 0; bucle <=9; bucle++){
 
 
 //! 1.3 Crea un bucle para conseguir dormir contando ovejas
-const ovejas = 0
-while (ovejas < 9) {
-	console.log('Intentando dormir');
-	ovejas == ovejas + 1;
-	break;
-}
-console.log('Dormido')
-
-/*
 const ovejas = 10
-switch (ovejas) {
-	case 1:
-		console.log('Intentando dormir');
-		break;
-	case 2:
-		console.log('Intentando dormir');
-		break;
-	default:
-		console.log('Dormido');
-		break;
-}*/
 
-/*if (ovejas === 1){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 2){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 3){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 4){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 5){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 6){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 7){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 8){
-	console.log('Intentando dormir 🐑');
-} else if (ovejas === 9){
-	console.log('Intentando dormir 🐑');
-} else {
-	console.log('Dormido!');
-}*/
-
-
+for (let i = 0; i < 10; i++ ){
+	console.log("Intentando dormir 🐑")
+} console.log("Dormido!")
 
 //node neoland-basic-algorithms
